@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Game from './pages/Game'
-import Menu from './pages/Menu'
+import Menu from './pages/Home'
 import './index.css'
 
 const App = () => {
