@@ -3,10 +3,8 @@ import useLoadGoogleMaps from '../hooks/useLoadScript';
 import streetview from 'awesome-streetview';
 import '../styles/streetView.css';
 
-const apiKey = "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
-
 const StreetView = () => {
-    const isLoaded = useLoadGoogleMaps(apiKey);
+    const isLoaded = useLoadGoogleMaps();
     const streetViewRef = useRef(null);
 
     let lat = streetview.locations[0][0];

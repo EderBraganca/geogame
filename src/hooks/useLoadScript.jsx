@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const useLoadGoogleMaps = (apiKey) => {
+const apiKey = "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
+
+const useLoadGoogleMaps = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
