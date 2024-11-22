@@ -1,11 +1,12 @@
-import React, { useEffect, useRef} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 import useLoadGoogleMaps from '../hooks/useLoadScript';
+import FinishRoundButton from './FinishRoundButton';
 import '../styles/map.css';
 
 const MapView = () => {
     const isLoaded = useLoadGoogleMaps();
     const mapRef = useRef(null);
-    let marker = null;
+    const [marker, setMarker] = useState(null);
 
     useEffect(() => {
         if (isLoaded) {
@@ -29,23 +30,28 @@ const MapView = () => {
 
         map.addListener("click", (event) => {
             addMarker(map, event.latLng);
-            marker = event.latLng.toString();
         });
 
         const addMarker = (map, location) => {
-            const dmarker = new AdvancedMarkerElement({
+            if (marker) {
+                setMarker(null);
+            }
+
+            const newMarker = new AdvancedMarkerElement({
                 map,
                 position: location,
                 gmpDraggable: true,
             });
+
+            setMarker(location.toString()); 
             
-            dmarker.addListener("click", (event) => {
-                dmarker.map = null;
+            newMarker.addListener("click", (event) => {
+                newMarker.map = null;
             });
 
             map.addListener("click", (event) => {
-                dmarker.position = event.latLng;
-                dmarker.map = map;
+                newMarker.position = event.latLng;
+                newMarker.map = map;
             });
         };
     }
@@ -53,9 +59,10 @@ const MapView = () => {
     return (
         <div>
             {isLoaded ? (
-                <div id="map" ref={mapRef} />
+                <div id="map" ref={mapRef}/>
             ) : 
-            (<p className="loading-text-map">Carregando o mapa...</p>)}
+            (<p className="loading-text-map">Loading...</p>)}
+            <FinishRoundButton isDisabled={marker !== null}/>
         </div>
     );
 };
