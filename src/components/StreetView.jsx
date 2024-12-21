@@ -1,14 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import useLoadGoogleMaps from '../hooks/useLoadScript';
-import streetview from 'awesome-streetview';
 import '../styles/streetView.css';
 
-const StreetView = () => {
+const StreetView = ({lat, lng}) => {
     const isLoaded = useLoadGoogleMaps();
     const streetViewRef = useRef(null);
-
-    let lat = streetview.locations[0][0];
-    let lng = streetview.locations[0][1];
 
     const fenway = { lat, lng };
 

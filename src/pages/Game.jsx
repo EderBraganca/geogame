@@ -6,6 +6,8 @@ import StartGameButton from '../components/StartGameButton';
 
 const Game = () => {
     const [marker, setMarker] = useState(null);
+    const [location, setLocation] = useState(null);
+    const [score, setScore] = useState(0);
     const [isRoundFinished, setIsRoundFinished] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
@@ -15,6 +17,7 @@ const Game = () => {
 
     const handleFinishRound = () => {
         setIsRoundFinished(true);
+        calculateScore(score);
     }
 
     const handleNextRound = () => {
@@ -22,11 +25,23 @@ const Game = () => {
         setMarker(null);
     }
 
+    const calculateScore = (acumulatedScore) => {
+        const markerLat = parseFloat(marker.split(',')[0].slice(1));
+        const markerLng = parseFloat(marker.split(',')[1].slice(0, -1));
+        const locationLat = location.lat;
+        const locationLng = location.lng;
+        let score = acumulatedScore;
+        score += Math.abs(markerLat - locationLat);
+        score += Math.abs(markerLng - locationLng);
+        setScore(score);
+    }
+
     return (
         <div>
             {!isRoundFinished && (
                 <Round  
                     setMarker={setMarker}
+                    setLocation={setLocation}
                 />
             )}
             {!isRoundFinished && (
@@ -36,7 +51,7 @@ const Game = () => {
                 />
             )}
             {isRoundFinished && 
-                <FinishRoundMenu />
+                <FinishRoundMenu score={score}/>
             }
             {isRoundFinished &&
                 <StartGameButton 
