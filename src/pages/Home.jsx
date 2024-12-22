@@ -1,5 +1,5 @@
 import React from 'react';
-import StartGameButton from '../components/StartGameButton';
+import StartGameButton from '../components/utils/StartGameButton';
 const Home = () => {
     return (
         <div>

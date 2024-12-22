@@ -1,8 +1,8 @@
 import React, { useEffect, useRef} from 'react';
-import useLoadGoogleMaps from '../hooks/useLoadScript';
-import '../styles/map.css';
+import useLoadGoogleMaps from '../../hooks/useLoadScript';
+import '../../styles/map.css';
 
-const MapView = ({setMarker}) => {
+const MiniMap = ({setMarker}) => {
     const isLoaded = useLoadGoogleMaps();
     const mapRef = useRef(null);
     const markerRef = useRef(null); // Referência para o marcador existente
@@ -58,4 +58,4 @@ const MapView = ({setMarker}) => {
     );
 };
 
-export default MapView;
+export default MiniMap;

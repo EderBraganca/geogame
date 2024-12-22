@@ -1,4 +1,4 @@
-import '../styles/button.css'
+import '../../styles/button.css'
 
 const FinishRoundButton = ({isDisabled, onClick}) => {
     return ( 

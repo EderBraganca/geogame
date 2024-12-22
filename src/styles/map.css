@@ -8,3 +8,11 @@
     width: 20vw;
     height: 33vh;
 }
+
+#scoremap {
+    z-index: 9999;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 40vw;
+    height: 66vh;
+}

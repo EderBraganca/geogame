@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Round from '../components/Round';
-import FinishRoundButton from '../components/FinishRoundButton';
-import FinishRoundMenu from '../components/FinishRoundMenu';
-import StartGameButton from '../components/StartGameButton';
+import FinishRoundButton from '../components/utils/FinishRoundButton';
+import FinishRoundMenu from '../components/menus/FinishRoundMenu';
+import StartGameButton from '../components/utils/StartGameButton';
 
 const Game = () => {
     const [marker, setMarker] = useState(null);
@@ -51,7 +51,7 @@ const Game = () => {
                 />
             )}
             {isRoundFinished && 
-                <FinishRoundMenu score={score}/>
+                <FinishRoundMenu score={score} marker={marker} location={location}/>
             }
             {isRoundFinished &&
                 <StartGameButton 

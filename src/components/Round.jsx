@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import StreetView from '../components/StreetView';
-import MapView from '../components/MapView';
+import StreetView from './StreetView';
+import MiniMap from './maps/MiniMap';
 import streetview from 'awesome-streetview';
 
 const Round = ({setMarker, setLocation}) => {
@@ -18,7 +18,7 @@ const Round = ({setMarker, setLocation}) => {
                 lat={lat}
                 lng={lng}
             />
-            <MapView 
+            <MiniMap 
                 setMarker={setMarker}
             />
         </div>
