@@ -3,11 +3,14 @@ import Round from '../components/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
 import StartGameButton from '../components/utils/StartGameButton';
+import * as geolib from 'geolib';
+
 
 const Game = () => {
     const [marker, setMarker] = useState(null);
     const [location, setLocation] = useState(null);
-    const [score, setScore] = useState(0);
+    const [roundScore, setRoundScore] = useState(0);
+    const [totalScore, setTotalScore] = useState(0);
     const [isRoundFinished, setIsRoundFinished] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
@@ -17,7 +20,7 @@ const Game = () => {
 
     const handleFinishRound = () => {
         setIsRoundFinished(true);
-        calculateScore(score);
+        calculateScore(totalScore);
     }
 
     const handleNextRound = () => {
@@ -25,15 +28,28 @@ const Game = () => {
         setMarker(null);
     }
 
-    const calculateScore = (acumulatedScore) => {
+    const calculateScore = (totalScore) => {
         const markerLat = parseFloat(marker.split(',')[0].slice(1));
         const markerLng = parseFloat(marker.split(',')[1].slice(0, -1));
         const locationLat = location.lat;
         const locationLng = location.lng;
-        let score = acumulatedScore;
-        score += Math.abs(markerLat - locationLat);
-        score += Math.abs(markerLng - locationLng);
-        setScore(score);
+
+        const distance = geolib.getDistance(
+            { latitude: locationLat, longitude: locationLng },
+            { latitude: markerLat, longitude: markerLng }
+        );
+        
+        let roundScore = 5000;
+
+        if (distance > 1000) {
+            roundScore -= Math.floor(distance / 3000);
+            if (roundScore < 0) {
+                roundScore = 0;
+            }
+        }
+
+        setRoundScore(roundScore);
+        setTotalScore(totalScore + roundScore);
     }
 
     return (
@@ -51,7 +67,11 @@ const Game = () => {
                 />
             )}
             {isRoundFinished && 
-                <FinishRoundMenu score={score} marker={marker} location={location}/>
+                <FinishRoundMenu 
+                    totalScore={totalScore} 
+                    roundScore={roundScore}
+                    marker={marker} 
+                    location={location}/>
             }
             {isRoundFinished &&
                 <StartGameButton 
