@@ -2,14 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import useLoadGoogleMaps from '../hooks/useLoadScript';
 import '../styles/streetView.css';
 
-const StreetView = ({lat, lng}) => {
+const StreetView = ({lat, lng, setLocation}) => {
     const isLoaded = useLoadGoogleMaps();
     const streetViewRef = useRef(null);
 
     const fenway = { lat, lng };
 
     useEffect(() => {
-        if (isLoaded) {
+        if (isLoaded) {    
+            setLocation({lat, lng});
             const panorama = new google.maps.StreetViewPanorama(
                 streetViewRef.current, 
                 {

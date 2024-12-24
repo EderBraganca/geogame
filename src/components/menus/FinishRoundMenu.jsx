@@ -1,12 +1,14 @@
 import ScoreMap from "../maps/ScoreMap";
 
-const FinishRoundMenu = ({score, location, marker}) => {
+const FinishRoundMenu = ({totalScore, roundScore, location, marker}) => {
     return ( 
         <div>
             <h1>FinishRoundMenu</h1>
             <p>
-                Your score is {score}
+                Your score is {roundScore}
+                Total: {totalScore}
             </p>
+
             <ScoreMap 
                 location={location} 
                 marker={marker}/>
