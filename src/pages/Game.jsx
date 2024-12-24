@@ -42,7 +42,7 @@ const Game = () => {
         let roundScore = 5000;
 
         if (distance > 1000) {
-            roundScore -= Math.floor(distance / 3500);
+            roundScore -= Math.floor(distance / 1000);
             if (roundScore < 0) {
                 roundScore = 0;
             }
