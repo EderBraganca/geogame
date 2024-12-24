@@ -21,13 +21,13 @@ const StreetView = ({lat, lng, setLocation}) => {
                     },
                     disableDefaultUI: true,
                     linksControl: false,
-                    panControl: false,
+                    panControl: true,
                     scrollwheel: false,
                     addressControl: false,
                     addressControlOptions: false,
                     imageDateControl: false,
                     showRoadLabels: false,
-                    // clickToGo: false,    
+                    zoomControl: true,
                 }
             );
         }
