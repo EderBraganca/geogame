@@ -1,20 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import StartGameButton from '../components/utils/StartGameButton';
+import Footer from '../components/footer/footer';
+import Header from '../components/header/header';
+import Menu from '../components/menus/Menu';
 
 const Home = () => {
-    const navigate = useNavigate();
-
     return (
         <div>
-            <h1>Home</h1>
-            <StartGameButton 
-                text='Start Game' 
-                className='startGameButton' 
-                onClick={() => 
-                    navigate('/game')
-                }
-            />
+            <Header />
+            <Menu />
+            <Footer />
         </div>
     )
 }

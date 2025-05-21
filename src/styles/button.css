@@ -6,3 +6,9 @@
     width: 20vw;
     height: 3vh;
 }
+
+.genericButton {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}

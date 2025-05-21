@@ -1,0 +1,6 @@
+.header-container {
+  background-color: var(--color-one);
+  color: white;
+  padding: 20px;
+  width: 100%;
+}

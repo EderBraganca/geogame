@@ -1,12 +1,12 @@
 #map {
     position: fixed;
-    bottom: 38vh;
+    bottom: 22vw;
     left: 1vh;
     z-index: 9999;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 20vw;
-    height: 33vh;
+    height: 20vw;
 }
 
 #scoremap {

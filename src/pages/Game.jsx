@@ -3,6 +3,8 @@ import Round from '../components/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
 import StartGameButton from '../components/utils/StartGameButton';
+import GenericButton from '../components/buttons/genericButton';
+import { useNavigate } from 'react-router-dom';
 import * as geolib from 'geolib';
 
 
@@ -13,6 +15,11 @@ const Game = () => {
     const [totalScore, setTotalScore] = useState(0);
     const [isRoundFinished, setIsRoundFinished] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+    const navigate = useNavigate();
+
+    const handleBackToMenu = () => {
+        navigate('/');
+    }
 
     useEffect(() => {
         setIsButtonEnabled(marker !== null);
@@ -58,6 +65,7 @@ const Game = () => {
                 <Round  
                     setMarker={setMarker}
                     setLocation={setLocation}
+                    gamemode="movie"
                 />
             )}
             {!isRoundFinished && (
@@ -74,9 +82,20 @@ const Game = () => {
                     location={location}/>
             }
             {isRoundFinished &&
-                <StartGameButton 
+                <GenericButton
+                    className='nextRoundButton'
                     text='Next Round'
+                    color={'var(--color-four)'}
                     onClick={handleNextRound} 
+                />
+            }
+            {isRoundFinished &&
+                <GenericButton 
+                    text='Back to menu'
+                    className='backToMenuButton'
+                    color='var(--color-five)'
+                    textColor='black'
+                    onClick={handleBackToMenu}
                 />
             }
 
