@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Round from '../components/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
-import StartGameButton from '../components/utils/StartGameButton';
 import GenericButton from '../components/buttons/genericButton';
 import { useNavigate } from 'react-router-dom';
+import '../styles/game.css';
 import * as geolib from 'geolib';
 
 
@@ -45,7 +45,7 @@ const Game = () => {
             { latitude: locationLat, longitude: locationLng },
             { latitude: markerLat, longitude: markerLng }
         );
-        
+
         let roundScore = 5000;
 
         if (distance > 1000) {
@@ -60,43 +60,43 @@ const Game = () => {
     }
 
     return (
-        <div>
-            {!isRoundFinished && (
-                <Round  
-                    setMarker={setMarker}
-                    setLocation={setLocation}
-                    gamemode="movie"
-                />
-            )}
-            {!isRoundFinished && (
-                <FinishRoundButton 
-                    isDisabled={isButtonEnabled} 
-                    onClick={handleFinishRound} 
-                />
-            )}
-            {isRoundFinished && 
-                <FinishRoundMenu 
-                    totalScore={totalScore} 
-                    roundScore={roundScore}
-                    marker={marker} 
-                    location={location}/>
+        <div className='no-scroll'>
+            {!isRoundFinished &&
+                <div className='gameHeader'>
+                    <Round
+                        setMarker={setMarker}
+                        setLocation={setLocation}
+                        gamemode="movie"
+                    />
+
+
+                    < FinishRoundButton
+                        isDisabled={isButtonEnabled}
+                        onClick={handleFinishRound}
+                    />
+                </div>
             }
             {isRoundFinished &&
-                <GenericButton
-                    className='nextRoundButton'
-                    text='Next Round'
-                    color={'var(--color-four)'}
-                    onClick={handleNextRound} 
-                />
-            }
-            {isRoundFinished &&
-                <GenericButton 
-                    text='Back to menu'
-                    className='backToMenuButton'
-                    color='var(--color-five)'
-                    textColor='black'
-                    onClick={handleBackToMenu}
-                />
+                <nav className='buttonsContainer'>
+                    <FinishRoundMenu
+                        totalScore={totalScore}
+                        roundScore={roundScore}
+                        marker={marker}
+                        location={location} />
+                    <GenericButton
+                        className='nextRoundButton'
+                        text='Next Round'
+                        color={'var(--color-four)'}
+                        onClick={handleNextRound}
+                    />
+                    <GenericButton
+                        text='Back to menu'
+                        className='backToMenuButton'
+                        color='var(--color-five)'
+                        textColor='black'
+                        onClick={handleBackToMenu}
+                    />
+                </nav>
             }
 
         </div>

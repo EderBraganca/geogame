@@ -1,0 +1,40 @@
+.mainMenu {
+    background-image: url('../assets/timesquare.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: color;
+    width: 100%;
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuTitle {
+    font-size: 100px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.menuSubTitle {
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.howToPlayContainer {
+    width: 100%;
+    height: 70vh;
+    background-color: var(--color-three);
+}
+
+.menuButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

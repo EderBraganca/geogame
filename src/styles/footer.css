@@ -2,7 +2,8 @@
     background-color: var(--color-one);
     color: white;
     padding: 20px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
 }

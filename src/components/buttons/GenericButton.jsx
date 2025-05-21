@@ -14,8 +14,7 @@ const GenericButton = ({ text, onClick, color, textColor }) => {
             style={{
                 backgroundColor: color || 'var(--color-one)',
                 color: textColor || 'white'
-            }}
-        >
+            }}>
             {text}
         </button>
     );
