@@ -24,7 +24,7 @@ const Menu = () => {
                 <GenericButton
                     text='Pratice'
                     className='praticeButton'
-                    color='var(--color-one)'
+                    color='var(--color-three)'
                     onClick={() => {
                         console.log('Pratice clicked');
                     }}

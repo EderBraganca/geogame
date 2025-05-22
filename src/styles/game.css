@@ -1,17 +1,48 @@
-/* Supondo que a classe .no-scroll seja adicionada ao body da página específica */
 .no-scroll {
     overflow: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.buttonContainer {
+.nextRoundNav {
+    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    height: 90vh;
+    width: 60%;
+    border-radius: 5%;
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.finishRoundContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.finishRoundTitle{
+    font-size: 40px;
+    font-weight: bold;
 }

@@ -1,16 +1,22 @@
 import '../../styles/menu.css';
+import HowToPlayCard from '../card/howToPlayCard';
 
 const HowToPlayMenu = () => {
     return (
         <div className="howToPlayContainer">
-            <h2>How to Play</h2>
-            <p>Welcome to the game! Here are the rules:</p>
-            <ul>
-                <li>Rule 1: Do this...</li>
-                <li>Rule 2: Do that...</li>
-                <li>Rule 3: Don't forget to...</li>
-            </ul>
-            <p>Good luck and have fun!</p>
+            <h2 className='htpTitle'>How to Play</h2>
+            <p className='htpSubTitle'>Here are the rules:</p>
+
+            <HowToPlayCard
+                title="Rule 1"
+                content="Realize o cadastro" />
+            <HowToPlayCard
+                title="Rule 2"
+                content="Tente clicar o mais próximo possível de onde você está no mapa" />
+            <HowToPlayCard
+                title="Rule 3"
+                content="Explore o mundo!" />
+            <p className='htpSubTitle'> Good luck and have fun!</p>
         </div>
     );
 }

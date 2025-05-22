@@ -1,0 +1,10 @@
+.cardContent {
+    background-color: var(--color-one);
+    width: 30%;
+    padding: 15px;
+    margin: 15px;
+}
+
+.cardTitle {
+    font-size: 25px;
+}

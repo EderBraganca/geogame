@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Round from '../components/Round';
+import Round from '../components/menus/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
 import GenericButton from '../components/buttons/genericButton';
@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/game.css';
 import * as geolib from 'geolib';
 
-
-const Game = () => {
+const Game = ({gamemode, pratice}) => {
     const [marker, setMarker] = useState(null);
     const [location, setLocation] = useState(null);
     const [roundScore, setRoundScore] = useState(0);
@@ -66,10 +65,8 @@ const Game = () => {
                     <Round
                         setMarker={setMarker}
                         setLocation={setLocation}
-                        gamemode="movie"
+                        gamemode={gamemode}
                     />
-
-
                     < FinishRoundButton
                         isDisabled={isButtonEnabled}
                         onClick={handleFinishRound}
@@ -77,25 +74,26 @@ const Game = () => {
                 </div>
             }
             {isRoundFinished &&
-                <nav className='buttonsContainer'>
+                <nav className='nextRoundNav'>
                     <FinishRoundMenu
                         totalScore={totalScore}
                         roundScore={roundScore}
                         marker={marker}
                         location={location} />
-                    <GenericButton
-                        className='nextRoundButton'
-                        text='Next Round'
-                        color={'var(--color-four)'}
-                        onClick={handleNextRound}
-                    />
-                    <GenericButton
-                        text='Back to menu'
-                        className='backToMenuButton'
-                        color='var(--color-five)'
-                        textColor='black'
-                        onClick={handleBackToMenu}
-                    />
+
+                    <nav className='buttonsContainer'>
+                        <GenericButton
+                            text='Next Round'
+                            color={'var(--color-four)'}
+                            onClick={handleNextRound}
+                        />
+                        <GenericButton
+                            text='Back to menu'
+                            color='var(--color-five)'
+                            textColor='black'
+                            onClick={handleBackToMenu}
+                        />
+                    </nav>
                 </nav>
             }
 

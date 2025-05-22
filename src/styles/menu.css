@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(0, 0, 0, 0.3);
 }
 
 .menuTitle {
@@ -37,4 +38,20 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.howToPlayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.htpTitle {
+    font-size: 40px;
+}
+
+
+.htpSubTitle {
+    font-size: 30px;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import StreetView from './StreetView';
-import MiniMap from './maps/MiniMap';
+import StreetView from '../maps/StreetView';
+import MiniMap from '../maps/MiniMap';
 import streetview from 'awesome-streetview';
 
 const selectGamemode = (gamemode) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import useLoadGoogleMaps from '../hooks/useLoadScript';
-import '../styles/streetView.css';
+import useLoadGoogleMaps from '../../hooks/useLoadScript';
+import '../../styles/streetView.css';
 
 const StreetView = ({lat, lng, setLocation, props}) => {
     const isLoaded = useLoadGoogleMaps();
