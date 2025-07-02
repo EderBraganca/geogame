@@ -1,6 +1,6 @@
 import '../../styles/button.css';
 
-const GenericButton = ({ text, onClick, color, textColor }) => {
+const GenericButton = ({ text, onClick, color, textColor, width, height, fontSize}) => {
     return (
         <button
             className="genericButton"
@@ -13,7 +13,11 @@ const GenericButton = ({ text, onClick, color, textColor }) => {
             }}
             style={{
                 backgroundColor: color || 'var(--color-one)',
-                color: textColor || 'white'
+                color: textColor || 'white',
+                width: width || 'auto',
+                height: height || 'auto',
+                fontSize: fontSize || '14px',
+
             }}>
             {text}
         </button>

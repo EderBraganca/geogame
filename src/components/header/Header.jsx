@@ -1,4 +1,4 @@
-import GenericButton from "../buttons/genericButton";
+import GenericButton from "../buttons/GenericButton";
 import { useNavigate } from "react-router-dom";
 import '../../styles/header.css';
 
@@ -33,6 +33,7 @@ const Header = () => {
                     text="Login"
                     color="var(--color-five)"
                     textColor="black"
+                    height="30px"
                     onClick={() =>
                         navigate("/login")
                     }
@@ -40,6 +41,7 @@ const Header = () => {
                 <GenericButton
                     text="Sign up"
                     color="var(--color-three)"
+                    height="30px"
                     onClick={() =>
                         navigate("/register")
                     }

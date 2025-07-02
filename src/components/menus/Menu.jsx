@@ -1,6 +1,6 @@
-import GenericButton from "../buttons/genericButton";
+import GenericButton from "../buttons/GenericButton";
 import { useNavigate } from "react-router-dom";
-import Header from '../header/header';
+import Header from '../header/Header';
 import "../../styles/menu.css";
 
 const Menu = () => {
@@ -17,6 +17,8 @@ const Menu = () => {
                     className='startGameButton'
                     color='var(--color-five)'
                     textColor='black'
+                    width={'200px'}
+                    fontSize={'16px'}
                     onClick={() =>
                         navigate('/game')
                     }
@@ -25,6 +27,8 @@ const Menu = () => {
                     text='Pratice'
                     className='praticeButton'
                     color='var(--color-three)'
+                    width={'200px'}
+                    fontSize={'16px'}
                     onClick={() => {
                         console.log('Pratice clicked');
                     }}

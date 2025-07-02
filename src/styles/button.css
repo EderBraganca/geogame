@@ -12,7 +12,11 @@
 }
 
 .genericButton {
-    padding: 10px 20px;
+    padding: 20px 40px;
     border-radius: 5px;
+    font-size: 15px;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

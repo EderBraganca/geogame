@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import StreetView from '../maps/StreetView';
 import MiniMap from '../maps/MiniMap';
-import streetview from 'awesome-streetview';
+import { getRandomLocation } from '../../hooks/location';
+// import streetview from 'awesome-streetview';
 
 const selectGamemode = (gamemode) => {
     let prop = {};
@@ -32,10 +33,9 @@ const Round = ({gamemode, setMarker, setLocation}) => {
     let props = selectGamemode(gamemode);
 
     useEffect(() => {
-        const rng = Math.floor(Math.random() * 33);
-        const newLat = streetview.locations[rng][0];
-        const newLng = streetview.locations[rng][1];
-        
+        const location = getRandomLocation();
+        const newLat = parseFloat(location.latitude);
+        const newLng = parseFloat(location.longitude);
         setLat(newLat);
         setLng(newLng);
     }, []);
