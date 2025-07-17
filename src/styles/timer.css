@@ -1,0 +1,13 @@
+.timer {
+    position: fixed;
+    z-index: 1000;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    min-width: 100px;
+    background-color: var(--color-four);
+    border-radius: 15px;
+}

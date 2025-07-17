@@ -3,11 +3,20 @@ import Round from '../components/menus/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
 import GenericButton from '../components/buttons/genericButton';
+import Timer from '../components/timer/timer';
 import { useNavigate } from 'react-router-dom';
 import '../styles/game.css';
 import * as geolib from 'geolib';
 
-const Game = ({gamemode, pratice}) => {
+const Game = () => {
+    //TODO
+    const { gamemode, pratice } = useState(() => {
+        const state = window.history.state;
+        return state ? state : { gamemode: 'movie', pratice: false };
+    }) || {};
+    
+    const [round, setRound] = useState(1);
+    const [maxRounds] = useState(5); 
     const [marker, setMarker] = useState(null);
     const [location, setLocation] = useState(null);
     const [roundScore, setRoundScore] = useState(0);
@@ -27,6 +36,7 @@ const Game = ({gamemode, pratice}) => {
     const handleFinishRound = () => {
         setIsRoundFinished(true);
         calculateScore(totalScore);
+        setRound(round + 1);
     }
 
     const handleNextRound = () => {
@@ -62,6 +72,9 @@ const Game = ({gamemode, pratice}) => {
         <div className='no-scroll'>
             {!isRoundFinished &&
                 <div className='gameHeader'>
+                    <div className='timerContainer'>
+                        <Timer seconds={pratice ? 120 : 60} />
+                    </div>
                     <Round
                         setMarker={setMarker}
                         setLocation={setLocation}
