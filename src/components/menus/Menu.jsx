@@ -20,7 +20,7 @@ const Menu = () => {
                     width={'200px'}
                     fontSize={'16px'}
                     onClick={() =>
-                        navigate('/game')
+                        navigate('/gamemodeselect')
                     }
                 />
                 <GenericButton
