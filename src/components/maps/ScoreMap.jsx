@@ -23,16 +23,14 @@ const ScoreMap = ({ marker, location }) => {
             mapId: 'DEMO_MAP_ID',
         });
 
-        const pinBackground = new PinElement({
-            background: "#00FF00",
-            glyphColor: "#FFF",
-        });
-        
         const locationMarker = new AdvancedMarkerElement({
             map,
-            position: location,            
-            title: "Correct Location",
-            content: pinBackground.element,
+            position: location,
+            content: new PinElement({
+                background: '#0F0',
+                glyphColor: "#FFF"
+            }).element,
+            title: "Correct Location"
         });
 
         const markerLocation = marker.split(',');
@@ -42,7 +40,11 @@ const ScoreMap = ({ marker, location }) => {
         const userMarker = new AdvancedMarkerElement({
             map,
             position: { lat: markerLat, lng: markerLng },
-            title: "Your Guess",
+            content: new PinElement({
+                background: 'var(--color-five)',
+                glyphColor: "#FFF"
+            }).element,
+            title: "Your Guess"
         });
 
         const bounds = new google.maps.LatLngBounds();
@@ -60,7 +62,7 @@ const ScoreMap = ({ marker, location }) => {
                     offset: "0", // Posição inicial do padrão
                     repeat: "4px", // Distância entre os traços
                 },
-            ],  
+            ],
         });
 
         line.setMap(map);
