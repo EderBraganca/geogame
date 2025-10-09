@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../../styles/timer.css';
 
-const Timer = ({seconds}) => {
+const Timer = ({ seconds }) => {
     const [timeLeft, setTimeLeft] = useState(seconds);
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setTimeLeft(prevTime => {
@@ -17,7 +17,7 @@ const Timer = ({seconds}) => {
 
         return () => clearInterval(interval);
     }, [seconds]);
-
+    
     return (
         <div className="timer">
             <h1>Time Remaining</h1>

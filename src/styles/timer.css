@@ -8,6 +8,6 @@
     align-items: center;
     width: 30%;
     min-width: 100px;
-    background-color: var(--color-four);
     border-radius: 15px;
+    background-color: rgba(0, 180, 204, 0.6); /* Semi-transparent background var(--color-four);*/
 }
