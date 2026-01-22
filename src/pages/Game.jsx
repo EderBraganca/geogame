@@ -3,7 +3,8 @@ import Round from '../components/menus/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
 import GenericButton from '../components/buttons/genericButton';
-import Timer, { getTimeLeft } from '../components/timer/timer';
+import Timer from '../components/timer/timer';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../styles/game.css';
 import * as geolib from 'geolib';
@@ -23,6 +24,7 @@ const Game = () => {
     const [totalScore, setTotalScore] = useState(0);
     const [isRoundFinished, setIsRoundFinished] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+    const timerState = useSelector((state) => state.timer);
     const navigate = useNavigate();
 
     const handleBackToMenu = () => {
@@ -31,13 +33,12 @@ const Game = () => {
 
     useEffect(() => {
         setIsButtonEnabled(marker !== null);
-        console.log(getTimeLeft());
-        if (Timer.timeLeft === 0 && marker === null) {
-            setRoundScore(0);
-            setIsRoundFinished(true);
-            setRound(round + 1);
+
+        // console.log("Timer: " + JSON.stringify(timerState));
+        if (timerState.remaining === 0 && !isRoundFinished) {
+            handleFinishRound();
         }
-    }, [marker]);
+    }, [timerState.remaining]);
 
     const handleFinishRound = () => {
         setIsRoundFinished(true);
@@ -51,8 +52,16 @@ const Game = () => {
     }
 
     const calculateScore = (totalScore) => {
-        const markerLat = parseFloat(marker.split(',')[0].slice(1));
-        const markerLng = parseFloat(marker.split(',')[1].slice(0, -1));
+        if (!marker || !location) {
+            setRoundScore(0);
+            return;
+        }
+        
+        const markerLat = parseFloat(marker?.split(',')[0].slice(1));
+        const markerLng = parseFloat(marker?.split(',')[1].slice(0, -1));
+
+        console.log("Marker LAT: " + markerLat);
+        console.log("Marker LNG: " + markerLng);
         const locationLat = location.lat;
         const locationLng = location.lng;
 
