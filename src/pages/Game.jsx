@@ -10,12 +10,8 @@ import '../styles/game.css';
 import * as geolib from 'geolib';
 
 const Game = () => {
-    //TODO
-    const { gamemode, pratice } = useState(() => {
-        const state = window.history.state;
-        return state ? state : { gamemode: 'movie', pratice: false };
-    }) || {};
-
+    const usr = window.history.state.usr || null;
+    const { gamemode, pratice } = usr || { gamemode: "movie", pratice: false };
     const [round, setRound] = useState(1);
     const [maxRounds] = useState(5);
     const [marker, setMarker] = useState(null);
@@ -34,7 +30,6 @@ const Game = () => {
     useEffect(() => {
         setIsButtonEnabled(marker !== null);
 
-        // console.log("Timer: " + JSON.stringify(timerState));
         if (timerState.remaining === 0 && !isRoundFinished) {
             handleFinishRound();
         }
@@ -60,8 +55,6 @@ const Game = () => {
         const markerLat = parseFloat(marker?.split(',')[0].slice(1));
         const markerLng = parseFloat(marker?.split(',')[1].slice(0, -1));
 
-        console.log("Marker LAT: " + markerLat);
-        console.log("Marker LNG: " + markerLng);
         const locationLat = location.lat;
         const locationLng = location.lng;
 
@@ -82,6 +75,10 @@ const Game = () => {
         setRoundScore(roundScore);
         setTotalScore(totalScore + roundScore);
     }
+
+    // TODO: Loading page with a chronometer between rounds
+
+    // TODO: end game if round > maxRounds
 
     return (
         <div className='no-scroll'>
