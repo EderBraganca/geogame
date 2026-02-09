@@ -4,8 +4,9 @@ import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
 import GenericButton from '../components/buttons/genericButton';
 import Timer from '../components/timer/timer';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { nextRound, endGame } from '../redux/gameSlice';
 import '../styles/game.css';
 import * as geolib from 'geolib';
 
@@ -21,6 +22,7 @@ const Game = () => {
     const [isRoundFinished, setIsRoundFinished] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
     const timerState = useSelector((state) => state.timer);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleBackToMenu = () => {
@@ -51,7 +53,7 @@ const Game = () => {
             setRoundScore(0);
             return;
         }
-        
+
         const markerLat = parseFloat(marker?.split(',')[0].slice(1));
         const markerLng = parseFloat(marker?.split(',')[1].slice(0, -1));
 
@@ -85,7 +87,7 @@ const Game = () => {
             {!isRoundFinished &&
                 <div className='gameHeader'>
                     <div className='timerContainer'>
-                        <Timer seconds={pratice ? 120 : 10} />
+                        <Timer seconds={pratice ? 120 : 30} />
                     </div>
                     <Round
                         setMarker={setMarker}
@@ -106,11 +108,13 @@ const Game = () => {
                         marker={marker}
                         location={location} />
                     <nav className='buttonsContainer'>
-                        <GenericButton
-                            text='Next Round'
-                            color={'var(--color-four)'}
-                            onClick={handleNextRound}
-                        />
+                        {
+                            <GenericButton
+                                text='Next Round'
+                                color={'var(--color-four)'}
+                                onClick={handleNextRound}
+                            />
+                        }
                         <GenericButton
                             text='Back to menu'
                             color='var(--color-five)'

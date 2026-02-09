@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Header from '../header/Header';
 import SelectGamemodeMenu from "./SelectGamemodeMenu";
+import { useDispatch } from "react-redux";
+import { startGame } from "../../redux/gameSlice";
 import "../../styles/menu.css";
 
 const Menu = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [showSelectGamemode, setShowSelectGamemode] = useState(false);
 
     return (
@@ -43,6 +46,7 @@ const Menu = () => {
                         width={'200px'}
                         fontSize={'16px'}
                         onClick={() => {
+                            dispatch(startGame({ name: "movie"}))
                             navigate('/game', { state: { gamemode: "movie", pratice: true } })
                         }}
                     />
