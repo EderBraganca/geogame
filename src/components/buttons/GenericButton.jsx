@@ -1,6 +1,6 @@
 import '../../styles/button.css';
 
-const GenericButton = ({ text, onClick, color, textColor, width, height, fontSize}) => {
+const GenericButton = ({ text, onClick, color, textColor, width, height, fontSize, disabled, hidden}) => {
     return (
         <button
             className="genericButton"
@@ -17,8 +17,10 @@ const GenericButton = ({ text, onClick, color, textColor, width, height, fontSiz
                 width: width || 'auto',
                 height: height || 'auto',
                 fontSize: fontSize || '14px',
-
-            }}>
+                display: hidden ? 'none' : 'flex',
+            }}
+            disabled={disabled || false}
+            >
             {text}
         </button>
     );

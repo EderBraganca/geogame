@@ -38,6 +38,7 @@ const gameSlice = createSlice({
         endGame(state) {
             state.isOver = true;
             state.isRunning = false;
+            state.round = 1;
         },
     },
 });

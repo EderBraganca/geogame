@@ -13,7 +13,6 @@ import * as geolib from 'geolib';
 const Game = () => {
     const usr = window.history.state.usr || null;
     const { gamemode, pratice } = usr || { gamemode: "movie", pratice: false };
-    const [round, setRound] = useState(1);
     const [maxRounds] = useState(5);
     const [marker, setMarker] = useState(null);
     const [location, setLocation] = useState(null);
@@ -22,6 +21,7 @@ const Game = () => {
     const [isRoundFinished, setIsRoundFinished] = useState(false);
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
     const timerState = useSelector((state) => state.timer);
+    const round = useSelector((state) => state.game.round);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -40,7 +40,15 @@ const Game = () => {
     const handleFinishRound = () => {
         setIsRoundFinished(true);
         calculateScore(totalScore);
-        setRound(round + 1);
+        verifyEndGame();
+    }
+
+    const verifyEndGame = () => {
+        if (round >= maxRounds) {
+            dispatch(endGame());
+        } else {
+            dispatch(nextRound());
+        }
     }
 
     const handleNextRound = () => {
@@ -102,6 +110,7 @@ const Game = () => {
             }
             {isRoundFinished &&
                 <nav className='nextRoundNav'>
+                    <p className='roundInfo'>Round {round} of {maxRounds}</p>
                     <FinishRoundMenu
                         totalScore={totalScore}
                         roundScore={roundScore}
@@ -113,6 +122,7 @@ const Game = () => {
                                 text='Next Round'
                                 color={'var(--color-four)'}
                                 onClick={handleNextRound}
+                                hidden={round >= maxRounds}
                             />
                         }
                         <GenericButton
