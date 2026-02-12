@@ -27,6 +27,7 @@ const Game = () => {
 
     const handleBackToMenu = () => {
         navigate('/');
+        dispatch(endGame());
     }
 
     useEffect(() => {
@@ -38,6 +39,7 @@ const Game = () => {
     }, [timerState.remaining]);
 
     const handleFinishRound = () => {
+        console.log('gamemode:', gamemode);
         setIsRoundFinished(true);
         calculateScore(totalScore);
         verifyEndGame();
@@ -88,8 +90,6 @@ const Game = () => {
 
     // TODO: Loading page with a chronometer between rounds
 
-    // TODO: end game if round > maxRounds
-
     return (
         <div className='no-scroll'>
             {!isRoundFinished &&
@@ -102,7 +102,7 @@ const Game = () => {
                         setLocation={setLocation}
                         gamemode={gamemode}
                     />
-                    < FinishRoundButton
+                    <FinishRoundButton
                         isDisabled={isButtonEnabled}
                         onClick={handleFinishRound}
                     />

@@ -5,7 +5,7 @@ const SelectGamemodeMenu = ({ gameModes, onSelect, backAction }) => {
     return (
         <div className="selectGamemodeMenu">                
             <h1 className="menuTitle">Select Game Mode</h1>
-            <p className="menuSubTitle">Choose a game mode to start playing.</p>
+            <p className="menuSubTitle">Choose a game mode to start playing</p>
             <section className="menuButtons">
                 {gameModes.map((mode) => (
                     <GenericButton

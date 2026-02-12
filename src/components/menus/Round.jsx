@@ -6,22 +6,20 @@ import { getRandomLocation } from '../../hooks/location';
 const selectGamemode = (gamemode) => {
     let prop = {};
     
-    prop.linksControl = false;
-
+    prop.zoomControl = true;
+    
     if(gamemode === 'movie'){
         prop.zoomControl = true;
         prop.scrollwheel = true;
         prop.clickToGo = true;
+        prop.linksControl = true;
     }
     else if(gamemode === 'noMovie'){
-        prop.zoomControl = true;
-        prop.scrollwheel =  true;
-        prop.clickToGo = true;
-    }
-    else if(gamemode === 'npz'){
-        prop.zoomControl = false;
-        prop.scrollwheel = false;
+        prop.scrollwheel = true;
         prop.clickToGo = false;
+        prop.disableDoubleClickZoom = true;
+        prop.linksControl = false;
+        console.log(prop);
     }
     return prop;
 }
