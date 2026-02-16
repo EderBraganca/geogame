@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Round from '../components/menus/Round';
 import FinishRoundButton from '../components/utils/FinishRoundButton';
 import FinishRoundMenu from '../components/menus/FinishRoundMenu';
