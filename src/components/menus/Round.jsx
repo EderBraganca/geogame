@@ -6,7 +6,6 @@ import { getRandomLocation } from '../../hooks/location';
 const selectGamemode = (gamemode) => {
     let prop = {};
     
-    prop.zoomControl = true;
     
     if(gamemode === 'movie'){
         prop.zoomControl = true;
@@ -19,7 +18,10 @@ const selectGamemode = (gamemode) => {
         prop.clickToGo = false;
         prop.disableDoubleClickZoom = true;
         prop.linksControl = false;
-        console.log(prop);
+        prop.panControl = true;
+        prop.disableDefaultUI = true;
+        prop.gestureHandling = 'none';
+        prop.keyboardShortcuts = false;
     }
     return prop;
 }

@@ -2,17 +2,17 @@ import { useEffect, useRef } from 'react';
 import useLoadGoogleMaps from '../../hooks/useLoadScript';
 import '../../styles/streetView.css';
 
-const StreetView = ({lat, lng, setLocation, props}) => {
+const StreetView = ({ lat, lng, setLocation, props }) => {
     const isLoaded = useLoadGoogleMaps();
     const streetViewRef = useRef(null);
 
     const fenway = { lat, lng };
 
     useEffect(() => {
-        if (isLoaded) {    
-            setLocation({lat, lng});
+        if (isLoaded) {
+            setLocation({ lat, lng });
             new google.maps.StreetViewPanorama(
-                streetViewRef.current, 
+                streetViewRef.current,
                 {
                     position: fenway,
                     pov: {
@@ -20,17 +20,19 @@ const StreetView = ({lat, lng, setLocation, props}) => {
                         pitch: 10,
                     },
                     showRoadLabels: false,
-                    disableDefaultUI: true,
                     addressControl: false,
                     addressControlOptions: false,
                     imageDateControl: false,
-                    panControl: true,
-
+                    zoomControl: true,
 
                     // props from gamemode
-                    linksControl: props.linksControl,
-                    zoomControl: props.zoomControl,
-                    scrollwheel: props.scrollwheel,
+                    linksControl: props.linksControl || false,
+                    scrollwheel: props.scrollwheel || false,
+                    panControl: props.panControl || false,
+                    disableDefaultUI: props.disableDefaultUI || false,
+                    gestureHandling: props.gestureHandling || 'auto',
+                    clickToGo: props.clickToGo || false,
+                    keyboardShortcuts: props.keyboardShortcuts || true,
                 }
             );
         }
