@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <Menu />
-            <HowToPlayMenu />
+            <HowToPlayMenu id='howToPlay'/>
             <Footer />
         </div>
     )

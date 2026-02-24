@@ -1,9 +1,9 @@
 import '../../styles/menu.css';
 import HowToPlayCard from '../card/howToPlayCard';
 
-const HowToPlayMenu = () => {
+const HowToPlayMenu = ({ id }) => {
     return (
-        <div className="howToPlayContainer">
+        <div className="howToPlayContainer" id={id}>
             <h2 className='htpTitle'>How to Play</h2>
             <p className='htpSubTitle'>Here are the rules:</p>
 

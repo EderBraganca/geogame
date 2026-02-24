@@ -1,4 +1,6 @@
 import GenericButton from "../buttons/GenericButton";
+import { FaGlobeAmericas } from "react-icons/fa";
+import { HashLink } from "react-router-hash-link";
 import { useNavigate } from "react-router-dom";
 import '../../styles/header.css';
 
@@ -19,14 +21,15 @@ const Header = () => {
                         e.target.style.cursor = 'default';
                     }}
                 >
-                    Menu
+                    <FaGlobeAmericas size={30} color="var(--color-five)" />
+                    <p className="iconText">GeoGame</p>
                 </a>
             </div>
             <nav className="headerButtons">
-                <a>
+                <HashLink smooth to="/#howToPlay">
                     How to play
-                </a>
-                <a>
+                </HashLink>
+                <a href="https://ederbraganca.github.io" target="_blank" rel="noopener noreferrer">
                     About Us
                 </a>
                 <GenericButton
@@ -38,16 +41,8 @@ const Header = () => {
                         navigate("/login")
                     }
                 />
-                <GenericButton
-                    text="Sign up"
-                    color="var(--color-three)"
-                    height="30px"
-                    onClick={() =>
-                        navigate("/register")
-                    }
-                />
             </nav>
-        </header>
+        </header >
     );
 };
 
