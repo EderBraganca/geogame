@@ -6,6 +6,7 @@ import SelectGamemodeMenu from "./SelectGamemodeMenu";
 import { useDispatch } from "react-redux";
 import { startGame } from "../../redux/gameSlice";
 import "../../styles/menu.css";
+import InteractiveBackground from '../utils/InteractiveBackground';
 
 const Menu = () => {
     const navigate = useNavigate();
@@ -13,7 +14,8 @@ const Menu = () => {
     const [showSelectGamemode, setShowSelectGamemode] = useState(false);
 
     return (
-        <div className="mainMenu">
+        // <div className="mainMenu">
+        <InteractiveBackground className="mainMenu">
             <Header />
             {
                 !showSelectGamemode &&
@@ -46,7 +48,7 @@ const Menu = () => {
                         width={'200px'}
                         fontSize={'16px'}
                         onClick={() => {
-                            dispatch(startGame({ name: "movie"}))
+                            dispatch(startGame({ name: "movie" }))
                             navigate('/game', { state: { gamemode: "movie", pratice: true } })
                         }}
                     />
@@ -65,7 +67,7 @@ const Menu = () => {
                     />
                 }
             </div>
-        </div>
+        </InteractiveBackground>
     );
 }
 export default Menu;
