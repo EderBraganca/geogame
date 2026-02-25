@@ -24,6 +24,7 @@ const StreetView = ({ lat, lng, setLocation, props }) => {
                     addressControlOptions: false,
                     imageDateControl: false,
                     zoomControl: true,
+                    // compass
 
                     // props from gamemode
                     linksControl: props.linksControl || false,

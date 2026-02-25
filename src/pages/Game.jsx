@@ -88,8 +88,6 @@ const Game = () => {
         setTotalScore(totalScore + roundScore);
     }
 
-    // TODO: Loading page with a chronometer between rounds
-
     return (
         <div className='no-scroll'>
             {!isRoundFinished &&

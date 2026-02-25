@@ -6,12 +6,11 @@ import { getRandomLocation } from '../../hooks/location';
 const selectGamemode = (gamemode) => {
     let prop = {};
     
-    
     if(gamemode === 'movie'){
-        prop.zoomControl = true;
         prop.scrollwheel = true;
         prop.clickToGo = true;
         prop.linksControl = true;
+        prop.panControl = true;
     }
     else if(gamemode === 'noMovie'){
         prop.scrollwheel = true;
@@ -20,7 +19,6 @@ const selectGamemode = (gamemode) => {
         prop.linksControl = false;
         prop.panControl = true;
         prop.disableDefaultUI = true;
-        prop.gestureHandling = 'none';
         prop.keyboardShortcuts = false;
     }
     return prop;
@@ -33,7 +31,6 @@ const Round = ({gamemode, setMarker, setLocation}) => {
 
     useEffect(() => {
         const location = getRandomLocation();
-        console.log(location.id)
         const newLat = parseFloat(location.latitude);
         const newLng = parseFloat(location.longitude);
         setLat(newLat);
