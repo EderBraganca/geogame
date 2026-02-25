@@ -49,9 +49,9 @@ const InteractiveBackground = ({ children }) => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          height: "99.9vh",
+          height: "101vh",
           maxWidth: "100%",
-          maxHeight: "99vh"
+          maxHeight: "101vh"
         }}
       />
       {/* Conteúdo */}
