@@ -22,14 +22,13 @@
 .howToPlayContainer {
     width: 100%;
     height: 70vh;
-    background-color: var(--color-three);
-}
-
-.howToPlayContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 1;
+    position: relative;
+    background-color: rgba(0,0,0, 0.3);
 }
 
 .htpTitle {
@@ -55,8 +54,3 @@
     flex-direction: column;
     gap: 15px;
 }
-/* 
-.selectGamemodeMenu .menuButtons{
-    gap: 20px;
-    margin-top: 30px;
-} */
