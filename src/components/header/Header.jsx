@@ -7,6 +7,17 @@ import '../../styles/header.css';
 const Header = () => {
     const navigate = useNavigate();
 
+    const rotateIcon = () => {
+        const icon = document.querySelector(".headerIcon");
+        if (icon) {
+            icon.style.transition = "transform 1s ease";
+            icon.style.transform = "rotate(360deg)";
+            setTimeout(() => {
+                icon.style.transform = "rotate(0deg)";
+            }, 1000);
+        }
+    };
+
     return (
         <header className="headerContainer">
             <div className="icon">
@@ -21,7 +32,7 @@ const Header = () => {
                         e.target.style.cursor = 'default';
                     }}
                 >
-                    <FaGlobeAmericas size={30} color="var(--color-five)" />
+                    <FaGlobeAmericas size={30} color="var(--color-five)" className="headerIcon" onMouseEnter={rotateIcon}/>
                     <p className="iconText">GeoGame</p>
                 </a>
             </div>

@@ -37,7 +37,7 @@ const InteractiveBackground = ({ children }) => {
       <div
         ref={bgRef}
         style={{
-          position: "absolute",
+          position: "fixed",
           inset: 0,
           backgroundImage: `url(${timesquare})`,
           backgroundSize: "cover",

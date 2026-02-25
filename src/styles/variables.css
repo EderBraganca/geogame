@@ -1,7 +1,12 @@
 :root {
     --color-one: #343838;
+    --color-one--rgb: 52, 56, 56;
     --color-two: #005F6B;
+    --color-two--rgb: 0, 95, 107;
     --color-three: #008C9E;
+    --color-three--rgb: 0, 140, 158;
     --color-four: #00B4CC;
+    --color-four--rgb: 0, 180, 204;
     --color-five: #00DFFC;
+    --color-five--rgb: 0, 223, 252;
   }
